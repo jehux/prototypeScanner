@@ -20,7 +20,8 @@ class MainActivity : AppCompatActivity() {
     fun setScanner(){
 
         var scanner = IntentIntegrator(this)
-        scanner.setDesiredBarcodeFormats(IntentIntegrator.EAN_13)
+        scanner.setDesiredBarcodeFormats(IntentIntegrator.DATA_MATRIX)
+        scanner.setDesiredBarcodeFormats(IntentIntegrator.CODE_128)
         scanner.setPrompt("Escanea tu código")
         scanner.setBeepEnabled(false)
         scanner.initiateScan()
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             if (result.contents == null) {
                 Toast.makeText(this, "Cancelado", Toast.LENGTH_LONG).show()
             } else {
-                //Toast.makeText(this, "El valor escaneado es: " + result.contents, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "El valor escaneado es: " + result.contents, Toast.LENGTH_LONG).show()
                 binding.tvresultCode.text = result.contents
             }
         } else {
